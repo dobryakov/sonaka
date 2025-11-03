@@ -7,11 +7,14 @@ export function OrdersList({ orders }: Props) {
   if (!orders.length) return <div>Нет заказов</div>;
   return (
     <ul>
-      {orders.map((o) => (
-        <li key={o.id}>
-          <strong>{o.order_number}</strong> — {o.order_date} — {o.status} — {o.total_amount.toFixed(2)} {o.currency}
-        </li>
-      ))}
+      {orders.map((o) => {
+        const amount = Number(o.total_amount) || 0;
+        return (
+          <li key={o.id}>
+            <strong>{o.order_number}</strong> — {o.order_date} — {o.status} — {amount.toFixed(2)} {o.currency}
+          </li>
+        );
+      })}
     </ul>
   );
 }

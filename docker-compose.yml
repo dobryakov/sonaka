@@ -32,7 +32,7 @@ services:
       context: ./frontend
     environment:
       NODE_ENV: development
-      VITE_API_BASE_URL: http://localhost:${BACKEND_PORT:-10001}/api/v1
+      VITE_API_BASE_URL: /api/v1
       PUBLIC_FRONTEND_HOST: ${PUBLIC_FRONTEND_HOST}
     depends_on:
       - backend

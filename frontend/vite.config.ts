@@ -9,6 +9,12 @@ export default defineConfig(({ mode }) => {
 			host: '0.0.0.0',
 			port: 3000,
 			allowedHosts: publicHost ? [publicHost] : ['n8n.dobryakov.net'],
+			proxy: {
+				'/api': {
+					target: 'http://backend:3000',
+					changeOrigin: true,
+				},
+			},
 		},
 	};
 });

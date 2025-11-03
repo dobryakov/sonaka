@@ -12,7 +12,7 @@ export function OrderDetailsView({ order }: Props) {
         {new Date(order.order_date).toLocaleDateString()} · {order.status} · {order.item_count} позиций
       </div>
       <div style={{ marginBottom: 16, fontWeight: 600 }}>
-        Итого: {order.total_amount.toFixed(2)} {order.currency}
+        Итого: {Number(order.total_amount).toFixed(2)} {order.currency}
       </div>
       <div style={{ border: '1px solid #e5e7eb', borderRadius: 8 }}>
         {order.order_items.map((item) => (

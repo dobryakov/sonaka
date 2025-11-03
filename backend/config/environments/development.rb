@@ -6,6 +6,9 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.active_support.deprecation = :log
+
+  # Allow all hosts in development (proxy via frontend uses host backend:3000)
+  config.hosts.clear
 end
 
 

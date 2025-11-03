@@ -8,7 +8,7 @@ export function DashboardTotals({ totals }: Props) {
     <div>
       <div>Всего заказов: {totals.total_orders_count}</div>
       <div>
-        Общая сумма заказанного: {totals.total_amount_ordered.toFixed(2)} {totals.currency}
+        Общая сумма заказанного: {Number(totals.total_amount_ordered).toFixed(2)} {totals.currency}
       </div>
     </div>
   );

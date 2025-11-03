@@ -16,7 +16,7 @@ export function OrderItemCard({ item }: Props) {
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: 600 }}>{item.product_name}</div>
         <div style={{ color: '#64748b' }}>
-          x{item.quantity} · {item.unit_price.toFixed(2)} · = {item.total_price.toFixed(2)}
+          x{item.quantity} · {Number(item.unit_price).toFixed(2)} · = {Number(item.total_price).toFixed(2)}
         </div>
       </div>
     </div>
