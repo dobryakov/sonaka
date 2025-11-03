@@ -1,0 +1,476 @@
+openapi: 3.0.3
+info:
+  title: Sonaka Customer Orders Dashboard API
+  version: 1.0.0
+  description: REST API для личного кабинета покупателя: дашборд заказов, список ранее купленных товаров, детали заказа
+  contact:
+    name: Sonaka Development Team
+
+servers:
+  - url: http://localhost:{port}/api/v1
+    variables:
+      port:
+        default: '10001'
+        description: Backend API порт (должен быть > 10000)
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Dashboard
+    description: Дашборд заказов и агрегированные данные
+  - name: Orders
+    description: Заказы покупателя
+  - name: Previously Purchased
+    description: Список ранее купленных товаров
+
+paths:
+  /dashboard:
+    get:
+      summary: Получить дашборд заказов (User Story 1)
+      description: Возвращает список заказов и общую сумму заказанного (FR-001, FR-002, FR-003)
+      operationId: getDashboard
+      tags:
+        - Dashboard
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: Дашборд успешно загружен (SC-001: < 2s для 95% запросов)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardResponse'
+              example:
+                orders:
+                  - id: 1
+                    order_number: 'ORD-2024-001'
+                    order_date: '2024-11-01'
+                    status: 'completed'
+                    total_amount: 12500.00
+                    currency: 'RUB'
+                  - id: 2
+                    order_number: 'ORD-2024-002'
+                    order_date: '2024-10-15'
+                    status: 'paid'
+                    total_amount: 8900.00
+                    currency: 'RUB'
+                totals:
+                  total_orders_count: 2
+                  total_amount_ordered: 21400.00
+                  currency: 'RUB'
+                pagination:
+                  current_page: 1
+                  total_pages: 1
+                  per_page: 20
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /orders/{order_id}:
+    get:
+      summary: Получить детали заказа (User Story 3)
+      description: Возвращает детальную информацию о заказе с позициями (FR-004, FR-005)
+      operationId: getOrderDetails
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: Детали заказа успешно загружены (SC-002: < 30s для 90% запросов)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailResponse'
+              example:
+                order:
+                  id: 1
+                  order_number: 'ORD-2024-001'
+                  order_date: '2024-11-01'
+                  status: 'completed'
+                  currency: 'RUB'
+                  total_amount: 12500.00
+                  item_count: 3
+                items:
+                  - id: 101
+                    product_id: 10
+                    product_name: 'Ортопедическая подушка Premium'
+                    product_image_url: 'https://cdn.sonaka.ru/products/pillow-10.jpg'
+                    quantity: 2
+                    unit_price: 4999.00
+                    total_price: 9998.00
+                  - id: 102
+                    product_id: 15
+                    product_name: 'Одеяло из бамбука'
+                    product_image_url: 'https://cdn.sonaka.ru/products/blanket-15.jpg'
+                    quantity: 1
+                    unit_price: 2502.00
+                    total_price: 2502.00
+                subtotals:
+                  items_total: 12500.00
+                  shipping_total: 0.00
+                  tax_total: 0.00
+                  grand_total: 12500.00
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /previously_purchased:
+    get:
+      summary: Получить список ранее купленных товаров (User Story 2)
+      description: Возвращает агрегированный список всех купленных товаров с суммарным количеством (FR-006, FR-007, FR-011)
+      operationId: getPreviouslyPurchased
+      tags:
+        - Previously Purchased
+      responses:
+        '200':
+          description: Список ранее купленных товаров успешно загружен (SC-004: 80% используют для повторных покупок)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreviouslyPurchasedResponse'
+              example:
+                items:
+                  - product_id: 10
+                    product_name: 'Ортопедическая подушка Premium'
+                    product_image_url: 'https://cdn.sonaka.ru/products/pillow-10.jpg'
+                    total_quantity: 5
+                    last_purchased_date: '2024-11-01'
+                  - product_id: 15
+                    product_name: 'Одеяло из бамбука'
+                    product_image_url: 'https://cdn.sonaka.ru/products/blanket-15.jpg'
+                    total_quantity: 2
+                    last_purchased_date: '2024-10-15'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Номер страницы (для пагинации/бесконечной ленты)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      required: false
+    
+    PerPage:
+      name: per_page
+      in: query
+      description: Количество элементов на странице
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      required: false
+    
+    OrderId:
+      name: order_id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+
+  schemas:
+    OrderSummary:
+      type: object
+      required:
+        - id
+        - order_number
+        - order_date
+        - status
+        - total_amount
+        - currency
+      properties:
+        id:
+          type: integer
+          description: ID заказа
+        order_number:
+          type: string
+          description: Человекочитаемый номер заказа
+          example: 'ORD-2024-001'
+        order_date:
+          type: string
+          format: date
+          description: Дата заказа
+          example: '2024-11-01'
+        status:
+          type: string
+          enum: ['pending', 'paid', 'completed', 'cancelled', 'refunded', 'partially_refunded']
+          description: Статус заказа (FR-010: только 'paid' и 'completed' в списках)
+          example: 'completed'
+        total_amount:
+          type: number
+          format: decimal
+          description: Общая сумма в валюте заказа (банковское округление до 2 знаков, FR-012)
+          example: 12500.00
+        currency:
+          type: string
+          pattern: '^[A-Z]{3}$'
+          description: ISO 4217 код валюты (USD, RUB, EUR и т.д.)
+          example: 'RUB'
+        item_count:
+          type: integer
+          description: Количество позиций в заказе
+          minimum: 1
+          example: 3
+
+    OrderItem:
+      type: object
+      required:
+        - id
+        - product_id
+        - product_name
+        - quantity
+        - unit_price
+        - total_price
+      properties:
+        id:
+          type: integer
+          description: ID позиции заказа
+        product_id:
+          type: integer
+          description: ID товара
+        product_name:
+          type: string
+          description: Название товара на момент покупки (FR-005: Edge Cases)
+          example: 'Ортопедическая подушка Premium'
+        product_image_url:
+          type: string
+          nullable: true
+          format: uri
+          description: URL изображения товара на момент покупки (или NULL для плейсхолдера, FR-005: Edge Cases)
+          example: 'https://cdn.sonaka.ru/products/pillow-10.jpg'
+        quantity:
+          type: integer
+          description: Количество
+          minimum: 1
+          example: 2
+        unit_price:
+          type: number
+          format: decimal
+          description: Цена за единицу на момент покупки (FR-005, FR-012)
+          example: 4999.00
+        total_price:
+          type: number
+          format: decimal
+          description: Общая цена позиции (quantity × unit_price)
+          example: 9998.00
+
+    DashboardTotals:
+      type: object
+      required:
+        - total_orders_count
+        - total_amount_ordered
+        - currency
+      properties:
+        total_orders_count:
+          type: integer
+          description: Количество релевантных заказов (FR-010, FR-013)
+          minimum: 0
+          example: 2
+        total_amount_ordered:
+          type: number
+          format: decimal
+          description: Общая сумма заказанного в валюте дашборда (FR-002: только суммы товаров, без налогов и доставки)
+          minimum: 0
+          example: 21400.00
+        currency:
+          type: string
+          pattern: '^[A-Z]{3}$'
+          description: Валюта дашборда
+          example: 'RUB'
+
+    Pagination:
+      type: object
+      required:
+        - current_page
+        - total_pages
+        - per_page
+      properties:
+        current_page:
+          type: integer
+          description: Текущая страница
+          minimum: 1
+        total_pages:
+          type: integer
+          description: Всего страниц
+          minimum: 0
+        per_page:
+          type: integer
+          description: Элементов на странице
+          minimum: 1
+
+    DashboardResponse:
+      type: object
+      required:
+        - orders
+        - totals
+        - pagination
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderSummary'
+          description: Список релевантных заказов (FR-010, FR-013)
+        totals:
+          $ref: '#/components/schemas/DashboardTotals'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+
+    OrderDetailResponse:
+      type: object
+      required:
+        - order
+        - items
+        - subtotals
+      properties:
+        order:
+          $ref: '#/components/schemas/OrderSummary'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          description: Позиции заказа (FR-005)
+        subtotals:
+          type: object
+          required:
+            - items_total
+            - shipping_total
+            - tax_total
+            - grand_total
+          properties:
+            items_total:
+              type: number
+              format: decimal
+              description: Сумма товаров
+              example: 12500.00
+            shipping_total:
+              type: number
+              format: decimal
+              description: Сумма доставки (не включается в общую сумму заказанного, FR-002)
+              example: 0.00
+            tax_total:
+              type: number
+              format: decimal
+              description: Сумма налогов (не включается в общую сумму заказанного, FR-002)
+              example: 0.00
+            grand_total:
+              type: number
+              format: decimal
+              description: Итоговая сумма заказа
+              example: 12500.00
+
+    PreviouslyPurchasedItem:
+      type: object
+      required:
+        - product_id
+        - product_name
+        - total_quantity
+        - last_purchased_date
+      properties:
+        product_id:
+          type: integer
+          description: ID товара
+        product_name:
+          type: string
+          description: Текущее название товара
+          example: 'Ортопедическая подушка Premium'
+        product_image_url:
+          type: string
+          nullable: true
+          format: uri
+          description: Текущий URL изображения (или NULL для плейсхолдера)
+          example: 'https://cdn.sonaka.ru/products/pillow-10.jpg'
+        total_quantity:
+          type: integer
+          description: Суммарное количество купленного товара (FR-006, FR-011: агрегация по product_id)
+          minimum: 1
+          example: 5
+        last_purchased_date:
+          type: string
+          format: date
+          description: Дата последней покупки этого товара
+          example: '2024-11-01'
+
+    PreviouslyPurchasedResponse:
+      type: object
+      required:
+        - items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviouslyPurchasedItem'
+          description: Агрегированный список ранее купленных товаров (FR-011: варианты/SKU свёрнуты)
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Тип ошибки
+          example: 'Unauthorized'
+        message:
+          type: string
+          description: Сообщение об ошибке (на русском языке согласно конституции)
+          example: 'Необходима аутентификация'
+        details:
+          type: object
+          description: Дополнительные детали ошибки
+          additionalProperties: true
+
+  responses:
+    Unauthorized:
+      description: Требуется аутентификация
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: 'Unauthorized'
+            message: 'Необходима аутентификация'
+
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: 'NotFound'
+            message: 'Заказ не найден'
+
+    InternalError:
+      description: Внутренняя ошибка сервера
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: 'InternalServerError'
+            message: 'Произошла ошибка при загрузке данных'
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT токен аутентификации
+

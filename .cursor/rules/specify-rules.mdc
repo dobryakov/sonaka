@@ -1,0 +1,68 @@
+# sonaka Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2025-11-03
+
+## Active Technologies
+
+- Ruby 3.x (Rails) + Node.js 18+ (React) + PostgreSQL 15+ (001-customer-orders-dashboard)
+
+## Project Structure
+
+```text
+backend/
+├── app/
+│   ├── models/
+│   ├── controllers/api/v1/
+│   ├── services/
+│   └── serializers/
+├── db/
+│   ├── migrations/
+│   └── seeds.rb
+└── spec/
+
+frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── types/
+└── tests/
+
+docker-compose.yml
+.env
+```
+
+## Commands
+
+**Backend (Rails)**:
+```bash
+docker-compose exec backend bin/rails db:migrate
+docker-compose exec backend bundle exec rspec
+docker-compose exec backend bin/rails db:seed
+```
+
+**Frontend (React)**:
+```bash
+docker-compose exec frontend npm test
+docker-compose exec frontend npm start
+```
+
+**Full Stack**:
+```bash
+docker-compose up -d
+docker-compose logs -f
+docker-compose down
+```
+
+## Code Style
+
+Ruby 3.x (Rails): Follow Rails conventions, use RuboCop  
+Node.js/React: Use Prettier + ESLint, TypeScript strict mode  
+PostgreSQL: Use migrations, avoid raw SQL in code
+
+## Recent Changes
+
+- 001-customer-orders-dashboard: Added Ruby 3.x (Rails) + Node.js 18+ (React) + PostgreSQL 15+
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->
