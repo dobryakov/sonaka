@@ -1,0 +1,11 @@
+{
+  "title": "Детали заказа",
+  "order": "Заказ {{order_number}}",
+  "date_status_items": "{{date}} · {{status}} · {{count}} позиций",
+  "total": "Итого: {{amount}} {{currency}}",
+  "no_image": "Нет изображения",
+  "loading": "Загрузка…",
+  "load_error": "Не удалось загрузить детали заказа"
+}
+
+

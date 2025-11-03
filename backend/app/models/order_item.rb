@@ -2,7 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :order, foreign_key: :order_ref_id
   belongs_to :product
 
-  validates :order_id, presence: true
+  validates :order, presence: true
   validates :product_id, presence: true
   validates :product_name, presence: true
   validates :quantity, presence: true, numericality: { greater_than: 0 }

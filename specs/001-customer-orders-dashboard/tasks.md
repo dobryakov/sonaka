@@ -83,13 +83,13 @@ US1 → US2 → US3
 
 ## Phase 5: User Story 3 — Детали заказа (P3)
 
-- [ ] T032 [US3] Реализовать контроллер `orders_controller.rb` c GET `/orders/{order_id}` в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/orders_controller.rb`
-- [ ] T033 [P] [US3] Добавить сериалайзер `OrderItemSerializer` и расширения `OrderSerializer` в `/home/ubuntu/sonaka/backend/app/serializers/`
-- [ ] T034 [US3] Обновить `routes.rb` для маршрута `/api/v1/orders/:order_id` в `/home/ubuntu/sonaka/backend/config/routes.rb`
-- [ ] T035 [P] [US3] Реализовать `ordersService.getOrderDetails(orderId)` в `/home/ubuntu/sonaka/frontend/src/services/ordersService.ts`
-- [ ] T036 [P] [US3] Создать компоненты `OrderDetailsView` и `OrderItemCard` в `/home/ubuntu/sonaka/frontend/src/components/OrderDetails/`
-- [ ] T037 [US3] Создать страницу `OrderDetailsPage.tsx` и роут из списка заказов в `/home/ubuntu/sonaka/frontend/src/pages/OrderDetailsPage.tsx`
-- [ ] T038 [US3] Добавить RU-локализацию строк деталей заказа в `/home/ubuntu/sonaka/frontend/src/locales/ru/orderDetails.json`
+- [X] T032 [US3] Реализовать контроллер `orders_controller.rb` c GET `/orders/{order_id}` в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/orders_controller.rb`
+- [X] T033 [P] [US3] Добавить сериалайзер `OrderItemSerializer` и расширения `OrderSerializer` в `/home/ubuntu/sonaka/backend/app/serializers/`
+- [X] T034 [US3] Обновить `routes.rb` для маршрута `/api/v1/orders/:order_id` в `/home/ubuntu/sonaka/backend/config/routes.rb`
+- [X] T035 [P] [US3] Реализовать `ordersService.getOrderDetails(orderId)` в `/home/ubuntu/sonaka/frontend/src/services/ordersService.ts`
+- [X] T036 [P] [US3] Создать компоненты `OrderDetailsView` и `OrderItemCard` в `/home/ubuntu/sonaka/frontend/src/components/OrderDetails/`
+- [X] T037 [US3] Создать страницу `OrderDetailsPage.tsx` и роут из списка заказов в `/home/ubuntu/sonaka/frontend/src/pages/OrderDetailsPage.tsx`
+- [X] T038 [US3] Добавить RU-локализацию строк деталей заказа в `/home/ubuntu/sonaka/frontend/src/locales/ru/orderDetails.json`
 
 ## Phase 6: Polish & Cross-Cutting
 

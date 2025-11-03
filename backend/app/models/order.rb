@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many :order_items, dependent: :destroy
+  has_many :order_items, foreign_key: :order_ref_id, dependent: :destroy
 
   enum status: {
     pending: 'pending',
