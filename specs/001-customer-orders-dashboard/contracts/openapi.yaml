@@ -60,6 +60,12 @@ paths:
                   total_orders_count: 2
                   total_amount_ordered: 21400.00
                   currency: 'RUB'
+                previously_purchased_items:
+                  - product_id: 10
+                    product_name: 'Ортопедическая подушка Premium'
+                    product_image_url: 'https://cdn.sonaka.ru/products/pillow-10.jpg'
+                    total_quantity: 5
+                    last_purchased_date: '2024-11-01'
                 pagination:
                   current_page: 1
                   total_pages: 1
@@ -319,6 +325,7 @@ components:
       required:
         - orders
         - totals
+        - previously_purchased_items
         - pagination
       properties:
         orders:
@@ -328,6 +335,11 @@ components:
           description: Список релевантных заказов (FR-010, FR-013)
         totals:
           $ref: '#/components/schemas/DashboardTotals'
+        previously_purchased_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviouslyPurchasedItem'
+          description: Агрегированный список ранее купленных товаров (FR-011)
         pagination:
           $ref: '#/components/schemas/Pagination'
 

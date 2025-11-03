@@ -10,7 +10,7 @@
 ## Prerequisites
 
 - Docker >= 20.10
-- Docker Compose >= 2.0
+- Docker Compose (v2, команда `docker compose`)
 - Git (для клонирования репозитория)
 
 ## Project Structure
@@ -63,13 +63,13 @@ REDIS_PORT=10004
 ### 3. Build Docker Images
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 ### 4. Start Services
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Это запустит:
@@ -81,11 +81,11 @@ docker-compose up -d
 
 ```bash
 # Создание БД и миграции
-docker-compose exec backend bin/rails db:create
-docker-compose exec backend bin/rails db:migrate
+docker compose exec backend ruby bin/rails db:create
+docker compose exec backend ruby bin/rails db:migrate
 
 # Загрузка тестовых данных
-docker-compose exec backend bin/rails db:seed
+docker compose exec backend ruby bin/rails db:seed
 ```
 
 ### 6. Verify
@@ -96,8 +96,8 @@ docker-compose exec backend bin/rails db:seed
 
 Проверьте логи:
 ```bash
-docker-compose logs -f backend
-docker-compose logs -f frontend
+docker compose logs -f backend
+docker compose logs -f frontend
 ```
 
 ## Test Data
@@ -131,7 +131,7 @@ docker-compose logs -f frontend
 
 ```bash
 # Войти в контейнер
-docker-compose exec backend bash
+docker compose exec backend bash
 
 # Генерация миграции
 bin/rails generate migration AddFieldToOrders field:type
@@ -143,18 +143,18 @@ bin/rails db:migrate
 bin/rails generate model OrderItem order:references product:references
 
 # RSpec тесты
-bundle exec rspec
+RAILS_ENV=test bundle exec rspec
 
 # Выборочные тесты (только изменённые компоненты)
-bundle exec rspec spec/services/
-bundle exec rspec spec/controllers/api/v1/
+RAILS_ENV=test bundle exec rspec spec/services/
+RAILS_ENV=test bundle exec rspec spec/controllers/api/v1/
 ```
 
 ### Frontend Development
 
 ```bash
 # Войти в контейнер
-docker-compose exec frontend bash
+docker compose exec frontend bash
 
 # Установка зависимостей
 npm install
@@ -174,10 +174,10 @@ npm test -- OrdersList.test.tsx
 
 ```bash
 # PostgreSQL CLI
-docker-compose exec postgres psql -U sonaka -d sonaka_dev
+docker compose exec postgres psql -U sonaka -d sonaka_dev
 
 # Выполнить SQL
-docker-compose exec backend bin/rails dbconsole
+docker compose exec backend ruby bin/rails dbconsole
 ```
 
 ## Testing
@@ -186,39 +186,39 @@ docker-compose exec backend bin/rails dbconsole
 
 ```bash
 # Все тесты
-docker-compose exec backend bundle exec rspec
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec"
 
 # Unit тесты моделей
-docker-compose exec backend bundle exec rspec spec/models/
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/models/"
 
 # Service объекты
-docker-compose exec backend bundle exec rspec spec/services/
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/services/"
 
 # Integration тесты контроллеров
-docker-compose exec backend bundle exec rspec spec/requests/
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/requests/"
 ```
 
 ### Frontend Tests (Jest + RTL)
 
 ```bash
 # Все тесты
-docker-compose exec frontend npm test
+docker compose exec frontend npm test
 
 # Компоненты
-docker-compose exec frontend npm test -- src/components/
+docker compose exec frontend npm test -- src/components/
 
 # Сервисы
-docker-compose exec frontend npm test -- src/services/
+docker compose exec frontend npm test -- src/services/
 ```
 
 ### E2E Tests (Playwright)
 
 ```bash
 # Запустить в отдельном контейнере (tbd в docker-compose.yml)
-docker-compose exec e2e npx playwright test
+docker compose exec e2e npx playwright test
 
 # Веб-интерфейс для отладки
-docker-compose exec e2e npx playwright show-report
+docker compose exec e2e npx playwright show-report
 ```
 
 ## Running Specific Tests
@@ -227,33 +227,33 @@ docker-compose exec e2e npx playwright show-report
 
 ```bash
 # Backend contract test
-docker-compose exec backend bundle exec rspec spec/requests/api/v1/dashboard_spec.rb
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/requests/api/v1/dashboard_spec.rb"
 
 # Frontend component test
-docker-compose exec frontend npm test -- DashboardPage.test.tsx
+docker compose exec frontend npm test -- DashboardPage.test.tsx
 
 # E2E test
-docker-compose exec e2e npx playwright test dashboard.spec.ts
+docker compose exec e2e npx playwright test dashboard.spec.ts
 ```
 
 ### User Story 2: Previously Purchased
 
 ```bash
 # Backend
-docker-compose exec backend bundle exec rspec spec/requests/api/v1/previously_purchased_spec.rb
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/requests/api/v1/previously_purchased_spec.rb"
 
 # Frontend
-docker-compose exec frontend npm test -- PreviouslyPurchasedList.test.tsx
+docker compose exec frontend npm test -- PreviouslyPurchasedList.test.tsx
 ```
 
 ### User Story 3: Order Details
 
 ```bash
 # Backend
-docker-compose exec backend bundle exec rspec spec/requests/api/v1/orders_spec.rb
+docker compose exec backend bash -lc "RAILS_ENV=test bundle exec rspec spec/requests/api/v1/orders_spec.rb"
 
 # Frontend
-docker-compose exec frontend npm test -- OrderDetailsView.test.tsx
+docker compose exec frontend npm test -- OrderDetailsView.test.tsx
 ```
 
 ## Performance Testing
@@ -262,7 +262,7 @@ docker-compose exec frontend npm test -- OrderDetailsView.test.tsx
 
 ```bash
 # Нагрузочный тест (если настроен k6/locust)
-docker-compose exec perf-tests k6 run load_tests/dashboard.js
+docker compose exec perf-tests k6 run load_tests/dashboard.js
 
 # Или через curl для быстрой проверки
 time curl -H "Authorization: Bearer $TOKEN" http://localhost:10001/api/v1/dashboard
@@ -280,21 +280,26 @@ time curl -H "Authorization: Bearer $TOKEN" http://localhost:10001/api/v1/orders
 
 ```bash
 # Полный сброс с перезагрузкой seeds
-docker-compose exec backend bin/rails db:reset
+docker compose exec backend ruby bin/rails db:reset
 ```
 
 ### Clean Containers
 
 ```bash
 # Остановить контейнеры
-docker-compose down
+docker compose down
 
 # Удалить volumes (БД очистится!)
-docker-compose down -v
+docker compose down -v
 
 # Полная очистка
-docker-compose down -v --rmi all
+docker compose down -v --rmi all
 ```
+
+## API Notes
+
+- `GET /api/v1/dashboard` возвращает поля `orders`, `totals`, `pagination`, а также `previously_purchased_items` со структурой: `product_id`, `product_name`, `product_image_url`, `total_quantity`, `last_purchased_date`.
+- В модели данных `OrderItem` используется внешний ключ `order_ref_id` (ассоциация `belongs_to :order, foreign_key: :order_ref_id`).
 
 ## Troubleshooting
 
@@ -302,49 +307,52 @@ docker-compose down -v --rmi all
 
 ```bash
 # Проверить логи
-docker-compose logs backend
+docker compose logs backend
 
 # Проверить подключение к БД
-docker-compose exec backend bin/rails db:version
+docker compose exec backend ruby bin/rails db:version
 
 # Пересоздать контейнер
-docker-compose up -d --force-recreate backend
+docker compose up -d --force-recreate backend
 ```
 
 ### Frontend: API недоступен
 
 ```bash
 # Проверить CORS настройки backend
-docker-compose exec backend cat config/initializers/cors.rb
+docker compose exec backend cat config/initializers/cors.rb
 
 # Проверить URL в фронтенде
-docker-compose exec frontend cat .env
+docker compose exec frontend cat .env
 ```
 
 ### Миграции не применяются
 
 ```bash
 # Проверить статус
-docker-compose exec backend bin/rails db:migrate:status
+docker compose exec backend ruby bin/rails db:migrate:status
 
 # Откатить последнюю
-docker-compose exec backend bin/rails db:rollback
+docker compose exec backend ruby bin/rails db:rollback
 
 # Запустить заново
-docker-compose exec backend bin/rails db:migrate
+docker compose exec backend ruby bin/rails db:migrate
 ```
 
 ### Тесты падают
 
 ```bash
-# Проверить тестовую БД
-docker-compose exec backend bin/rails db:test:prepare
+# Подготовка test БД
+docker compose exec backend ruby bin/rails db:create db:migrate RAILS_ENV=test
 
 # Очистить кэш
-docker-compose exec frontend npm run clear-cache
+docker compose exec frontend npm run clear-cache
 
 # Перезапустить контейнеры тестов
-docker-compose restart backend frontend
+docker compose restart backend frontend
+
+# Полный ресет окружения
+docker compose down -v && docker compose up -d postgres backend
 ```
 
 ## Next Steps

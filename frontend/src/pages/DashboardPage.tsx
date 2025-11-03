@@ -3,6 +3,7 @@ import { getDashboard } from '../services/dashboardService';
 import type { DashboardResponse } from '../types/dashboard';
 import { DashboardTotals } from '../components/Dashboard/DashboardTotals';
 import { OrdersList } from '../components/Dashboard/OrdersList';
+import { PreviouslyPurchasedList } from '../components/Dashboard/PreviouslyPurchasedList';
 
 export default function DashboardPage() {
   const [data, setData] = useState<DashboardResponse | null>(null);
@@ -26,6 +27,7 @@ export default function DashboardPage() {
     <div>
       <DashboardTotals totals={data.totals} />
       <OrdersList orders={data.orders} />
+      <PreviouslyPurchasedList items={data.previously_purchased_items ?? []} />
     </div>
   );
 }
