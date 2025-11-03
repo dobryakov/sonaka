@@ -37,7 +37,7 @@ end
     currency: "RUB",
     exchange_rate: 1.0,
     total_amount: 0,
-    item_count: 0,
+    item_count: 1,
     order_date: Date.today - i.days,
     has_partial_refund: false
   )
@@ -60,19 +60,36 @@ end
   order.update!(total_amount: totals, item_count: order.order_items.count)
 end
 
-Order.create!(
+cancelled_order = Order.create!(
   customer: customer,
   order_number: next_order_number,
   status: "cancelled",
   currency: "RUB",
   exchange_rate: 1.0,
   total_amount: 0,
-  item_count: 0,
+  item_count: 1,
   order_date: Date.today - 10.days,
   has_partial_refund: false
 )
 
-Order.create!(
+# Добавим один товар к отменённому заказу, чтобы удовлетворить валидации и согласовать суммы
+if (p = Product.first)
+  qty = 1
+  unit = p.price || 0
+  OrderItem.create!(
+    order: cancelled_order,
+    product: p,
+    product_name: p.name,
+    product_image_url: p.primary_image_url,
+    quantity: qty,
+    unit_price: unit,
+    total_price: qty * unit
+  )
+  totals = cancelled_order.order_items.sum(:total_price)
+  cancelled_order.update!(total_amount: totals, item_count: cancelled_order.order_items.count)
+end
+
+partial_refund_order = Order.create!(
   customer: customer,
   order_number: next_order_number,
   status: "completed",
@@ -83,6 +100,23 @@ Order.create!(
   order_date: Date.today - 5.days,
   has_partial_refund: true
 )
+
+# Добавим один товар в заказ с частичным возвратом, чтобы суммы и item_count были непротиворечивы
+if (p2 = Product.second || Product.first)
+  qty2 = 1
+  unit2 = 1000.0
+  OrderItem.create!(
+    order: partial_refund_order,
+    product: p2,
+    product_name: p2.name,
+    product_image_url: p2.primary_image_url,
+    quantity: qty2,
+    unit_price: unit2,
+    total_price: qty2 * unit2
+  )
+  totals2 = partial_refund_order.order_items.sum(:total_price)
+  partial_refund_order.update!(total_amount: totals2, item_count: partial_refund_order.order_items.count)
+end
 
 puts "Seeds loaded: #{Customer.count} customers, #{Product.count} products, #{Order.count} orders, #{OrderItem.count} items"
 
