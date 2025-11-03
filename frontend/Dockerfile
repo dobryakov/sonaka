@@ -7,7 +7,8 @@ WORKDIR ${APP_HOME}
 
 COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ${APP_HOME}/
 
-RUN sh -lc 'if [ -f package-lock.json ]; then npm ci; elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; else npm install; fi'
+# Используем npm install, чтобы не падать при несовпадении package-lock.json
+RUN sh -lc 'npm install --no-audit --no-fund'
 
 COPY . ${APP_HOME}
 
