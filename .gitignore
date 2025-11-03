@@ -1,1 +1,46 @@
 .env
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.idea/
+.vscode/
+*.log
+*.log*
+
+# Node/Frontend
+node_modules/
+frontend/node_modules/
+dist/
+build/
+coverage/
+*.min.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ruby on Rails/Backend
+backend/log/
+backend/tmp/
+.bundle/
+vendor/bundle/
+.byebug_history
+backend/storage/
+backend/public/packs/
+backend/node_modules/
+
+# Python (if any tooling)
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Environment
+.env*
+

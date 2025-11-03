@@ -36,11 +36,11 @@ US1 → US2 → US3
 
 ## Phase 1: Setup
 
-- [ ] T001 Создать `.env` с параметрами портов и БД в `/home/ubuntu/sonaka/.env`
-- [ ] T002 [P] Добавить `docker-compose.yml` со службами backend(10001), frontend(10002), postgres(10003) в `/home/ubuntu/sonaka/docker-compose.yml`
-- [ ] T003 [P] Создать `backend/Dockerfile` для Rails API в `/home/ubuntu/sonaka/backend/Dockerfile`
-- [ ] T004 [P] Создать `frontend/Dockerfile` для React SPA в `/home/ubuntu/sonaka/frontend/Dockerfile`
-- [ ] T005 Конфигурировать README раздел «Запуск» в `/home/ubuntu/sonaka/README.md`
+- [X] T001 Создать `.env` с параметрами портов и БД в `/home/ubuntu/sonaka/.env`
+- [X] T002 [P] Добавить `docker-compose.yml` со службами backend(10001), frontend(10002), postgres(10003) в `/home/ubuntu/sonaka/docker-compose.yml`
+- [X] T003 [P] Создать `backend/Dockerfile` для Rails API в `/home/ubuntu/sonaka/backend/Dockerfile`
+- [X] T004 [P] Создать `frontend/Dockerfile` для React SPA в `/home/ubuntu/sonaka/frontend/Dockerfile`
+- [X] T005 Конфигурировать README раздел «Запуск» в `/home/ubuntu/sonaka/README.md`
 
 ## Phase 2: Foundational
 
