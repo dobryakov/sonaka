@@ -45,7 +45,7 @@ class DashboardTotalsCalculator
     OrderItem
       .joins(:order)
       .joins("LEFT JOIN products ON products.id = order_items.product_id")
-      .where(orders: orders_scope.except(:order))
+      .merge(orders_scope.except(:order))
       .group('order_items.product_id', 'products.name', 'products.primary_image_url')
       .select(
         'order_items.product_id AS product_id',

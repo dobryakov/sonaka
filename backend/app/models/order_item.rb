@@ -1,5 +1,5 @@
 class OrderItem < ApplicationRecord
-  belongs_to :order
+  belongs_to :order, foreign_key: :order_ref_id
   belongs_to :product
 
   validates :order_id, presence: true

@@ -14,7 +14,16 @@ module Api
         totals = calculator.totals
         pagination = build_pagination(calculator)
 
-        render json: { orders: orders, totals: totals, pagination: pagination }, serializer: DashboardSerializer
+        render json: {
+          orders: orders,
+          totals: {
+            total_orders_count: totals.total_orders_count,
+            total_amount_ordered: totals.total_amount_ordered,
+            currency: totals.currency
+          },
+          previously_purchased_items: totals.previously_purchased_items,
+          pagination: pagination
+        }
       end
 
       private
