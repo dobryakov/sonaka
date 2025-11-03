@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT:-10003}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB
+    depends_on:
+      - postgres
+    ports:
+      - "${BACKEND_PORT:-10001}:3000"
+    command: bash -lc "bundle install && bin/rails db:prepare && bin/rails s -b 0.0.0.0 -p 3000"
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      NODE_ENV: development
+      VITE_API_BASE_URL: http://localhost:${BACKEND_PORT:-10001}/api/v1
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-10002}:3000"
+    command: bash -lc "npm ci || npm install && npm run dev -- --host 0.0.0.0 --port 3000"
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.47.0-jammy
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+    environment:
+      CI: "true"
+      PLAYWRIGHT_HTML_REPORT: never
+      BASE_URL: http://frontend:3000
+    depends_on:
+      - frontend
+    entrypoint: ["bash", "-lc"]
+    command: "npm ci || npm install && npx playwright install --with-deps && npm run test:e2e"
+
+volumes:
+  pgdata:
+
+

@@ -1,0 +1,16 @@
+{
+  "name": "sonaka-frontend",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "test": "jest --passWithNoTests",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "vite": "^5.0.0"
+  }
+}
+
+

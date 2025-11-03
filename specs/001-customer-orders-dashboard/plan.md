@@ -19,12 +19,14 @@
 **Testing**: 
 - Backend: RSpec, FactoryBot
 - Frontend: Jest, React Testing Library
-- E2E: Cypress или Playwright  
+- E2E: Playwright (отдельный Docker‑сервис и отдельная CI‑джоба)  
 **Target Platform**: Веб-браузеры (desktop + mobile responsive)  
 **Project Type**: Web (frontend + backend)  
 **Performance Goals**: 
 - 95% пользователей видят дашборд < 2 с (SC-001)
 - 90% пользователей открывают детали заказа < 30 с (SC-002)  
+**Precision**:
+- Денежные значения округляются банковским методом (half‑to‑even) до 2 знаков (FR‑012); покрыто unit‑тестами и контрактными тестами.
 **Constraints**: 
 - Интерфейс на русском языке
 - Glass-morphism UI с мягкими светло-зелёными цветами
@@ -48,7 +50,7 @@
 ✅ **Автоматизированное тестирование как обязательство**
 - Backend: RSpec + FactoryBot (spec/models/, spec/services/, spec/requests/)
 - Frontend: Jest + React Testing Library (tests/components/, tests/pages/)
-- E2E: Playwright для UI (отдельный Docker контейнер)
+- E2E: Playwright для UI (отдельный Docker‑сервис и отдельная CI‑джоба)
 - Отдельный набор тестовых данных в db/seeds.rb для быстрого старта
 
 ✅ **Язык интерфейса — русский**

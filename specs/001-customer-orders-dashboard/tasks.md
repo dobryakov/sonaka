@@ -67,6 +67,10 @@ US1 → US2 → US3
 - [ ] T023 [US1] Создать страницу `DashboardPage.tsx` и маршрутизацию в `/home/ubuntu/sonaka/frontend/src/pages/DashboardPage.tsx`
 - [ ] T024 [US1] Добавить бесконечную ленту `useInfiniteScroll` в `/home/ubuntu/sonaka/frontend/src/hooks/useInfiniteScroll.ts`
 - [ ] T025 [US1] Интегрировать RU-локализацию строк дашборда в `/home/ubuntu/sonaka/frontend/src/locales/ru/dashboard.json`
+ - [ ] T049 [US1] Реализовать банковское округление (half‑to‑even) в `DashboardTotalsCalculator` и сериалайзерах
+ - [ ] T050 [US1] Написать unit‑тесты на округление (краевые кейсы .5) в `spec/services/dashboard_totals_calculator_spec.rb`
+ - [ ] T051 [US1] Unit‑тесты на точность сумм и конвертацию валют в `spec/services/dashboard_totals_calculator_spec.rb`
+ - [ ] T052 [US1] Контрактные тесты `/dashboard` в `spec/requests/api/v1/dashboard_spec.rb` (мультивалюта, статусы, возвраты)
 
 ## Phase 4: User Story 2 — Ранее купленные товары (P2)
 
@@ -93,6 +97,15 @@ US1 → US2 → US3
 - [ ] T040 [P] Включить обработку ошибок и сообщения на русском в `/home/ubuntu/sonaka/backend/app/controllers/application_controller.rb`
 - [ ] T041 [P] Доработать доступность и стили (glass-morphism, prefers-reduced-motion) в `/home/ubuntu/sonaka/frontend/src/`
 - [ ] T042 Настроить выборочный запуск автотестов (RSpec, Jest) в `/home/ubuntu/sonaka/.github/workflows/ci.yml`
+ - [ ] T043 [P] Добавить Docker‑сервис e2e (Playwright) в `/home/ubuntu/sonaka/docker-compose.yml`
+ - [ ] T044 [P] Инициализировать Playwright: конфиг, базовые spec'и в `/home/ubuntu/sonaka/frontend/tests/e2e/`
+ - [ ] T045 Настроить скрипты запуска e2e (headless) в `/home/ubuntu/sonaka/frontend/package.json`
+ - [ ] T046 Включить e2e‑джобу в CI `/home/ubuntu/sonaka/.github/workflows/ci.yml` (отдельный job)
+ - [ ] T047 Подготовить фикстуры/сиды для e2e и команды запуска в README
+ - [ ] T048 Добавить шаг загрузки сидов в CI (`rails db:prepare && rails db:seed`) перед unit/integration/e2e
+ - [ ] T053 Сгенерировать большие тест‑данные (1M заказов) через сиды/фабрики для перф‑замеров
+ - [ ] T054 Добавить перф‑тесты (профилирование и p95 latency) на `/dashboard` в CI (отдельный job)
+ - [ ] T055 Зафиксировать бюджет перфоманса и фейки данных в `quickstart.md`
 
 ---
 
