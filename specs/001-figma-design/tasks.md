@@ -67,16 +67,16 @@ description: "Task list for feature implementation: Интеграция диз�
 
 ### Implementation for User Story 1
 
-- [ ] T018 [US1] Apply theme CSS variables to global styles in frontend/src/styles/theme.css
-- [ ] T019 [US1] Update DashboardPage component to use theme colors in frontend/src/pages/DashboardPage.tsx
-- [ ] T020 [US1] Apply glass-morphism effects to all card containers in DashboardPage
-- [ ] T021 [US1] Add FloatingBackground component to DashboardPage layout
-- [ ] T022 [US1] Update all existing buttons to use theme colors in frontend/src/components/common/
-- [ ] T023 [US1] Apply gradient effects to page headings using GradientTitle component
-- [ ] T024 [US1] Ensure all transitions use CSS variables (--transition-fast, --transition-normal, --transition-slow)
-- [ ] T025 [US1] Add prefers-reduced-motion support for all animations in frontend/src/styles/animations.css
-- [ ] T026 [US1] Update color scheme for all interactive elements (links, buttons, hover states)
-- [ ] T027 [US1] Apply glass-morphism to main content containers and wrappers
+- [X] T018 [US1] Apply theme CSS variables to global styles in frontend/src/styles/theme.css
+- [X] T019 [US1] Update DashboardPage component to use theme colors in frontend/src/pages/DashboardPage.tsx
+- [X] T020 [US1] Apply glass-morphism effects to all card containers in DashboardPage
+- [X] T021 [US1] Add FloatingBackground component to DashboardPage layout
+- [X] T022 [US1] Update all existing buttons to use theme colors in frontend/src/components/common/
+- [X] T023 [US1] Apply gradient effects to page headings using GradientTitle component
+- [X] T024 [US1] Ensure all transitions use CSS variables (--transition-fast, --transition-normal, --transition-slow)
+- [X] T025 [US1] Add prefers-reduced-motion support for all animations in frontend/src/styles/animations.css
+- [X] T026 [US1] Update color scheme for all interactive elements (links, buttons, hover states)
+- [X] T027 [US1] Apply glass-morphism to main content containers and wrappers
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently. All screens should use consistent visual style.
 
@@ -90,18 +90,18 @@ description: "Task list for feature implementation: Интеграция диз�
 
 ### Implementation for User Story 2
 
-- [ ] T028 [P] [US2] Implement Sidebar component structure in frontend/src/components/Sidebar/Sidebar.tsx
-- [ ] T029 [P] [US2] Create Sidebar.module.css with glass-morphism and navigation styles in frontend/src/components/Sidebar/Sidebar.module.css
-- [ ] T030 [US2] Add animated logo to Sidebar component
-- [ ] T031 [US2] Implement navigation menu items list in Sidebar (Dashboard, Orders, etc.)
-- [ ] T032 [US2] Add active route detection and visual highlighting in Sidebar
-- [ ] T033 [US2] Implement navigation callback handling in Sidebar
-- [ ] T034 [US2] Add hover effects for menu items in Sidebar.module.css
+- [X] T028 [P] [US2] Implement Sidebar component structure in frontend/src/components/Sidebar/Sidebar.tsx
+- [X] T029 [P] [US2] Create Sidebar.module.css with glass-morphism and navigation styles in frontend/src/components/Sidebar/Sidebar.module.css
+- [X] T030 [US2] Add animated logo to Sidebar component
+- [X] T031 [US2] Implement navigation menu items list in Sidebar (Dashboard, Orders, etc.)
+- [X] T032 [US2] Add active route detection and visual highlighting in Sidebar
+- [X] T033 [US2] Implement navigation callback handling in Sidebar
+- [X] T034 [US2] Add hover effects for menu items in Sidebar.module.css
 - [ ] T035 [US2] Implement collapse/expand functionality for mobile devices in Sidebar
-- [ ] T036 [US2] Add fade-in and slide-in animations for Sidebar appearance
-- [ ] T037 [US2] Integrate Sidebar into DashboardPage layout in frontend/src/pages/DashboardPage.tsx
-- [ ] T038 [US2] Update routing to work with Sidebar navigation in frontend/src/
-- [ ] T039 [US2] Add responsive behavior for Sidebar on mobile devices (min 320px)
+- [X] T036 [US2] Add fade-in and slide-in animations for Sidebar appearance
+- [X] T037 [US2] Integrate Sidebar into DashboardPage layout in frontend/src/pages/DashboardPage.tsx
+- [X] T038 [US2] Update routing to work with Sidebar navigation in frontend/src/
+- [X] T039 [US2] Add responsive behavior for Sidebar on mobile devices (min 320px)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently. Sidebar should be fully functional with navigation.
 
@@ -115,18 +115,18 @@ description: "Task list for feature implementation: Интеграция диз�
 
 ### Implementation for User Story 3
 
-- [ ] T040 [P] [US3] Create OrderCard component in frontend/src/components/Dashboard/OrderCard.tsx (update existing)
-- [ ] T041 [P] [US3] Create OrderCard.module.css with styling in frontend/src/components/Dashboard/OrderCard.module.css
-- [ ] T042 [US3] Implement order status icon mapping in OrderCard component (pending, processing, completed, cancelled)
-- [ ] T043 [US3] Add status color indicators using orderStatusColors from theme.ts
-- [ ] T044 [US3] Apply GradientTitle to order number/title in OrderCard
-- [ ] T045 [US3] Implement glass-morphism effect for OrderCard using Card component
-- [ ] T046 [US3] Add order information display (date, total, items count) in OrderCard
-- [ ] T047 [US3] Implement "Подробнее" button with hover effects in OrderCard
-- [ ] T048 [US3] Add hover effect enhancement (shadow, transform) to OrderCard
-- [ ] T049 [US3] Update OrdersList component to use new OrderCard in frontend/src/components/Dashboard/OrdersList.tsx
+- [X] T040 [P] [US3] Create OrderCard component in frontend/src/components/Dashboard/OrderCard.tsx (update existing)
+- [X] T041 [P] [US3] Create OrderCard.module.css with styling in frontend/src/components/Dashboard/OrderCard.module.css
+- [X] T042 [US3] Implement order status icon mapping in OrderCard component (pending, processing, completed, cancelled)
+- [X] T043 [US3] Add status color indicators using orderStatusColors from theme.ts
+- [X] T044 [US3] Apply GradientTitle to order number/title in OrderCard
+- [X] T045 [US3] Implement glass-morphism effect for OrderCard using Card component
+- [X] T046 [US3] Add order information display (date, total, items count) in OrderCard
+- [X] T047 [US3] Implement "Подробнее" button with hover effects in OrderCard
+- [X] T048 [US3] Add hover effect enhancement (shadow, transform) to OrderCard
+- [X] T049 [US3] Update OrdersList component to use new OrderCard in frontend/src/components/Dashboard/OrdersList.tsx
 - [ ] T050 [US3] Add fade-in animation for OrderCard appearance in list
-- [ ] T051 [US3] Handle empty orders state using EmptyState component
+- [X] T051 [US3] Handle empty orders state using EmptyState component
 - [ ] T052 [US3] Update order status labels with localization in frontend/src/locales/ru/translation.json
 
 **Checkpoint**: At this point, User Stories 1, 2, AND 3 should all work independently. Orders should be displayed with improved visual design.
@@ -141,19 +141,19 @@ description: "Task list for feature implementation: Интеграция диз�
 
 ### Implementation for User Story 4
 
-- [ ] T053 [P] [US4] Create StatCard component in frontend/src/components/Dashboard/StatCard.tsx
-- [ ] T054 [P] [US4] Create StatCard.module.css with styling in frontend/src/components/Dashboard/StatCard.module.css
-- [ ] T055 [US4] Implement icon display in StatCard (optional icon prop)
-- [ ] T056 [US4] Add gradient number styling for value display in StatCard
-- [ ] T057 [US4] Apply glass-morphism effect to StatCard using Card component
-- [ ] T058 [US4] Implement title and description display in StatCard
+- [X] T053 [P] [US4] Create StatCard component in frontend/src/components/Dashboard/StatCard.tsx
+- [X] T054 [P] [US4] Create StatCard.module.css with styling in frontend/src/components/Dashboard/StatCard.module.css
+- [X] T055 [US4] Implement icon display in StatCard (optional icon prop)
+- [X] T056 [US4] Add gradient number styling for value display in StatCard
+- [X] T057 [US4] Apply glass-morphism effect to StatCard using Card component
+- [X] T058 [US4] Implement title and description display in StatCard
 - [ ] T059 [US4] Add fade-in and slide-up animations for StatCard appearance
-- [ ] T060 [US4] Create StatsGrid component to display multiple StatCards in frontend/src/components/Dashboard/StatsGrid.tsx
-- [ ] T061 [US4] Integrate StatsGrid into DashboardPage in frontend/src/pages/DashboardPage.tsx
-- [ ] T062 [US4] Map dashboard totals data to StatCard components (total_orders_count, total_amount_ordered)
+- [X] T060 [US4] Create StatsGrid component to display multiple StatCards in frontend/src/components/Dashboard/StatsGrid.tsx
+- [X] T061 [US4] Integrate StatsGrid into DashboardPage in frontend/src/pages/DashboardPage.tsx
+- [X] T062 [US4] Map dashboard totals data to StatCard components (total_orders_count, total_amount_ordered)
 - [ ] T063 [US4] Add appropriate icons for each stat card (orders count, total amount)
-- [ ] T064 [US4] Format currency values properly in StatCard (RUB formatting)
-- [ ] T065 [US4] Add responsive grid layout for StatCards on mobile devices
+- [X] T064 [US4] Format currency values properly in StatCard (RUB formatting)
+- [X] T065 [US4] Add responsive grid layout for StatCards on mobile devices
 
 **Checkpoint**: At this point, User Stories 1, 2, 3, AND 4 should all work independently. Dashboard should show statistics cards with proper styling.
 
@@ -167,21 +167,21 @@ description: "Task list for feature implementation: Интеграция диз�
 
 ### Implementation for User Story 5
 
-- [ ] T066 [P] [US5] Update ProductItem component in frontend/src/components/Dashboard/ProductItem.tsx
-- [ ] T067 [P] [US5] Create ProductItem.module.css with styling in frontend/src/components/Dashboard/ProductItem.module.css
-- [ ] T068 [US5] Apply glass-morphism effect to ProductItem using Card component
-- [ ] T069 [US5] Implement product image display with placeholder fallback in ProductItem
+- [X] T066 [P] [US5] Update ProductItem component in frontend/src/components/Dashboard/ProductItem.tsx
+- [X] T067 [P] [US5] Create ProductItem.module.css with styling in frontend/src/components/Dashboard/ProductItem.module.css
+- [X] T068 [US5] Apply glass-morphism effect to ProductItem using Card component
+- [X] T069 [US5] Implement product image display with placeholder fallback in ProductItem
 - [ ] T070 [US5] Add placeholder icon component for missing product images
-- [ ] T071 [US5] Display product name with proper typography in ProductItem
-- [ ] T072 [US5] Show quantity and last purchased date in ProductItem
-- [ ] T073 [US5] Add hover effect to ProductItem
-- [ ] T074 [US5] Create PreviouslyPurchasedList component in frontend/src/components/Dashboard/PreviouslyPurchasedList.tsx
-- [ ] T075 [US5] Apply GradientTitle to "Ранее купленные товары" section heading
-- [ ] T076 [US5] Implement grid layout for product items list
-- [ ] T077 [US5] Integrate PreviouslyPurchasedList into DashboardPage
-- [ ] T078 [US5] Map previously_purchased_items API data to ProductItem components
-- [ ] T079 [US5] Handle empty state for previously purchased items using EmptyState
-- [ ] T080 [US5] Add responsive layout for product items on mobile devices
+- [X] T071 [US5] Display product name with proper typography in ProductItem
+- [X] T072 [US5] Show quantity and last purchased date in ProductItem
+- [X] T073 [US5] Add hover effect to ProductItem
+- [X] T074 [US5] Create PreviouslyPurchasedList component in frontend/src/components/Dashboard/PreviouslyPurchasedList.tsx
+- [X] T075 [US5] Apply GradientTitle to "Ранее купленные товары" section heading
+- [X] T076 [US5] Implement grid layout for product items list
+- [X] T077 [US5] Integrate PreviouslyPurchasedList into DashboardPage
+- [X] T078 [US5] Map previously_purchased_items API data to ProductItem components
+- [X] T079 [US5] Handle empty state for previously purchased items using EmptyState
+- [X] T080 [US5] Add responsive layout for product items on mobile devices
 - [ ] T081 [US5] Format dates properly (Russian locale) in ProductItem
 
 **Checkpoint**: All user stories should now be independently functional. Previously purchased items should display with proper styling.
@@ -192,15 +192,15 @@ description: "Task list for feature implementation: Интеграция диз�
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T082 [P] Verify all components use CSS variables from theme.css
-- [ ] T083 [P] Ensure all animations respect prefers-reduced-motion
+- [X] T082 [P] Verify all components use CSS variables from theme.css
+- [X] T083 [P] Ensure all animations respect prefers-reduced-motion
 - [ ] T084 Check contrast ratios for accessibility (minimum 4.5:1 for text)
 - [ ] T085 Verify touch target sizes (minimum 44x44px) for mobile devices
 - [ ] T086 [P] Add ARIA labels where needed for accessibility
 - [ ] T087 Test responsive design on different screen sizes (320px, 768px, 1024px, 1920px)
-- [ ] T088 Verify glass-morphism effects work with backdrop-filter fallback
+- [X] T088 Verify glass-morphism effects work with backdrop-filter fallback
 - [ ] T089 [P] Update all localization strings in frontend/src/locales/ru/translation.json
-- [ ] T090 Ensure all error states use EmptyState component with proper styling
+- [X] T090 Ensure all error states use EmptyState component with proper styling
 - [ ] T091 Verify loading states use updated LoadingSpinner with theme colors
 - [ ] T092 Test keyboard navigation (Tab, Enter, Escape) for all interactive elements
 - [ ] T093 Run quickstart.md validation scenarios

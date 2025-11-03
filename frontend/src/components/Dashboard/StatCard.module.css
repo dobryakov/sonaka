@@ -1,0 +1,38 @@
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.value {
+  margin: 0;
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
