@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  url: <%= ENV["DATABASE_URL"] || "postgres://#{ENV.fetch("POSTGRES_USER", "sonaka")}:#{ENV.fetch("POSTGRES_PASSWORD", "sonaka_dev_password")}@#{ENV.fetch("BACKEND_DB_HOST", "postgres")}:#{ENV.fetch("BACKEND_DB_PORT", 5432)}/#{ENV.fetch("POSTGRES_DB", "sonaka_dev")}" %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  url: <%= (ENV["DATABASE_URL"] || "postgres://#{ENV.fetch("POSTGRES_USER", "sonaka")}:#{ENV.fetch("POSTGRES_PASSWORD", "sonaka_dev_password")}@#{ENV.fetch("BACKEND_DB_HOST", "postgres")}:#{ENV.fetch("BACKEND_DB_PORT", 5432)}/#{ENV.fetch("POSTGRES_DB", "sonaka_test")}").gsub("sonaka_dev", "sonaka_test") %>
+
+production:
+  <<: *default
+
+

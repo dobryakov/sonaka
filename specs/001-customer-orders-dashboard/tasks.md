@@ -44,15 +44,15 @@ US1 → US2 → US3
 
 ## Phase 2: Foundational
 
-- [ ] T006 Настроить Rails API каркас (routes, версии API) в `/home/ubuntu/sonaka/backend/config/routes.rb`
-- [ ] T007 Настроить подключение к PostgreSQL в `/home/ubuntu/sonaka/backend/config/database.yml`
-- [ ] T008 [P] Определить миграции сущностей Customer, Product в `/home/ubuntu/sonaka/backend/db/migrations/`
-- [ ] T009 [P] Определить миграции сущностей Order, OrderItem (индексы для SC-001/002) в `/home/ubuntu/sonaka/backend/db/migrations/`
-- [ ] T010 Добавить сиды тестовых данных в `/home/ubuntu/sonaka/backend/db/seeds.rb`
-- [ ] T011 Настроить фронтенд проект (React + TS) в `/home/ubuntu/sonaka/frontend/package.json`
-- [ ] T012 [P] Создать общий API слой и базовый клиент в `/home/ubuntu/sonaka/frontend/src/services/api.ts`
-- [ ] T013 [P] Настроить локализацию RU в `/home/ubuntu/sonaka/frontend/src/i18n.ts`
-- [ ] T014 Подготовить общие UI-компоненты (EmptyState, LoadingSpinner) в `/home/ubuntu/sonaka/frontend/src/components/common/`
+- [X] T006 Настроить Rails API каркас (routes, версии API) в `/home/ubuntu/sonaka/backend/config/routes.rb`
+- [X] T007 Настроить подключение к PostgreSQL в `/home/ubuntu/sonaka/backend/config/database.yml`
+- [X] T008 [P] Определить миграции сущностей Customer, Product в `/home/ubuntu/sonaka/backend/db/migrations/`
+- [X] T009 [P] Определить миграции сущностей Order, OrderItem (индексы для SC-001/002) в `/home/ubuntu/sonaka/backend/db/migrations/`
+- [X] T010 Добавить сиды тестовых данных в `/home/ubuntu/sonaka/backend/db/seeds.rb`
+- [X] T011 Настроить фронтенд проект (React + TS) в `/home/ubuntu/sonaka/frontend/package.json`
+- [X] T012 [P] Создать общий API слой и базовый клиент в `/home/ubuntu/sonaka/frontend/src/services/api.ts`
+- [X] T013 [P] Настроить локализацию RU в `/home/ubuntu/sonaka/frontend/src/i18n.ts`
+- [X] T014 Подготовить общие UI-компоненты (EmptyState, LoadingSpinner) в `/home/ubuntu/sonaka/frontend/src/components/common/`
 
 ## Phase 3: User Story 1 — Дашборд заказов (P1)
 
