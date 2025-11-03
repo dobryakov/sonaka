@@ -74,12 +74,12 @@ US1 → US2 → US3
 
 ## Phase 4: User Story 2 — Ранее купленные товары (P2)
 
-- [ ] T026 [US2] Добавить агрегацию ранее купленных в сервисе (SQL GROUP BY product_id) в `/home/ubuntu/sonaka/backend/app/services/dashboard_totals_calculator.rb`
-- [ ] T027 [P] [US2] Расширить сериалайзер `DashboardSerializer` полем `previously_purchased_items` в `/home/ubuntu/sonaka/backend/app/serializers/dashboard_serializer.rb`
-- [ ] T028 [US2] Обновить endpoint `/dashboard` для возврата агрегата покупок в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/dashboard_controller.rb`
-- [ ] T029 [US2] Реализовать `dashboardService.getPreviouslyPurchased()` или использовать данные из `/dashboard` в `/home/ubuntu/sonaka/frontend/src/services/dashboardService.ts`
-- [ ] T030 [P] [US2] Создать компонент `PreviouslyPurchasedList` в `/home/ubuntu/sonaka/frontend/src/components/Dashboard/PreviouslyPurchasedList.tsx`
-- [ ] T031 [US2] Добавить RU-локализацию строк ранее купленных в `/home/ubuntu/sonaka/frontend/src/locales/ru/previouslyPurchased.json`
+- [X] T026 [US2] Добавить агрегацию ранее купленных в сервисе (SQL GROUP BY product_id) в `/home/ubuntu/sonaka/backend/app/services/dashboard_totals_calculator.rb`
+- [X] T027 [P] [US2] Расширить сериалайзер `DashboardSerializer` полем `previously_purchased_items` в `/home/ubuntu/sonaka/backend/app/serializers/dashboard_serializer.rb`
+- [X] T028 [US2] Обновить endpoint `/dashboard` для возврата агрегата покупок в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/dashboard_controller.rb`
+- [X] T029 [US2] Реализовать `dashboardService.getPreviouslyPurchased()` или использовать данные из `/dashboard` в `/home/ubuntu/sonaka/frontend/src/services/dashboardService.ts`
+- [X] T030 [P] [US2] Создать компонент `PreviouslyPurchasedList` в `/home/ubuntu/sonaka/frontend/src/components/Dashboard/PreviouslyPurchasedList.tsx`
+- [X] T031 [US2] Добавить RU-локализацию строк ранее купленных в `/home/ubuntu/sonaka/frontend/src/locales/ru/previouslyPurchased.json`
 
 ## Phase 5: User Story 3 — Детали заказа (P3)
 

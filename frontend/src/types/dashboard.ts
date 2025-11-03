@@ -14,6 +14,14 @@ export type DashboardTotals = {
   currency: string;
 };
 
+export type PreviouslyPurchasedItem = {
+  product_id: number;
+  product_name: string;
+  product_image_url?: string | null;
+  total_quantity: number;
+  last_purchased_date?: string | null; // ISO date
+};
+
 export type Pagination = {
   current_page: number;
   total_pages: number;
@@ -23,6 +31,7 @@ export type Pagination = {
 export type DashboardResponse = {
   orders: OrderSummary[];
   totals: DashboardTotals;
+  previously_purchased_items?: PreviouslyPurchasedItem[];
   pagination: Pagination;
 };
 

@@ -1,5 +1,5 @@
 class DashboardSerializer < ActiveModel::Serializer
-  attributes :orders, :totals, :pagination
+  attributes :orders, :totals, :pagination, :previously_purchased_items
 
   def orders
     ActiveModelSerializers::SerializableResource.new(
@@ -17,6 +17,10 @@ class DashboardSerializer < ActiveModel::Serializer
 
   def pagination
     object[:pagination]
+  end
+
+  def previously_purchased_items
+    object[:totals].previously_purchased_items
   end
 end
 
