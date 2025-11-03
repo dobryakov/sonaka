@@ -1,4 +1,5 @@
 .env
+
 # Universal
 .DS_Store
 Thumbs.db
@@ -43,4 +44,7 @@ docker-compose.override.yml
 
 # Environment
 .env*
+
+frontend/node_modules/
+frontend/test-results/
 
