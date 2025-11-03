@@ -1,0 +1,27 @@
+:root {
+  /* Цвета */
+  --color-primary: #06b6d4;
+  --color-primary-light: #22d3ee;
+  --color-primary-dark: #0ea5e9;
+  
+  /* Градиенты */
+  --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+  --gradient-secondary: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 100%);
+  
+  /* Glass-morphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 10px;
+  
+  /* Анимации */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+  
+  /* Статусы заказов */
+  --status-pending: #06b6d4;
+  --status-processing: #22d3ee;
+  --status-completed: #10b981;
+  --status-cancelled: #6b7280;
+}
+

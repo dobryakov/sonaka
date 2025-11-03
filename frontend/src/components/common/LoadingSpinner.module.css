@@ -1,0 +1,29 @@
+.loadingSpinner {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-primary-light);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.text {
+  color: var(--color-primary-dark);
+  font-size: 0.875rem;
+}
+
+/* Поддержка prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-top-color: var(--color-primary-light);
+  }
+}
+

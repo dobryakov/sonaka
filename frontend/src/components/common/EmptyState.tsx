@@ -1,19 +1,24 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import styles from './EmptyState.module.css';
 
-type EmptyStateProps = {
-  message?: string;
-};
+export interface EmptyStateProps {
+  title: string;
+  description?: string;
+  icon?: React.ReactNode;
+}
 
-export const EmptyState: React.FC<EmptyStateProps> = ({ message }) => {
-  const { t } = useTranslation();
+export const EmptyState: React.FC<EmptyStateProps> = ({
+  title,
+  description,
+  icon,
+}) => {
   return (
-    <div style={{ padding: 24, textAlign: "center", color: "#6b7280" }}>
-      {message || t("common.empty")}
+    <div className={styles.emptyState}>
+      {icon && <div className={styles.icon}>{icon}</div>}
+      <h3 className={styles.title}>{title}</h3>
+      {description && <p className={styles.description}>{description}</p>}
     </div>
   );
 };
 
 export default EmptyState;
-
-

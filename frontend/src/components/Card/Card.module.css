@@ -1,0 +1,50 @@
+.card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all var(--transition-normal) ease;
+}
+
+.card.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.card.gradient {
+  background: var(--gradient-primary);
+  border: none;
+}
+
+.card.default {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card.hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+/* Fallback для браузеров без поддержки backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .card.glass {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Поддержка prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  
+  .card.hoverable:hover {
+    transform: none;
+  }
+}
+

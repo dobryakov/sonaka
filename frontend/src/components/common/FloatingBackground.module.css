@@ -1,0 +1,56 @@
+.floatingBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(60px);
+}
+
+.circle1 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-primary);
+  top: 10%;
+  left: 10%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.circle2 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-primary-light);
+  top: 60%;
+  right: 10%;
+  animation: float 25s ease-in-out infinite reverse;
+  animation-delay: -5s;
+}
+
+.circle3 {
+  width: 250px;
+  height: 250px;
+  background: var(--color-primary-dark);
+  bottom: 20%;
+  left: 50%;
+  animation: float 18s ease-in-out infinite;
+  animation-delay: -10s;
+}
+
+/* Поддержка prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .circle1,
+  .circle2,
+  .circle3 {
+    animation: none;
+  }
+}
+
