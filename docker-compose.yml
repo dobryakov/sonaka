@@ -50,8 +50,8 @@ services:
       BASE_URL: http://frontend:3000
     depends_on:
       - frontend
-    entrypoint: ["bash", "-lc"]
-    command: "npm ci || npm install && npx playwright install --with-deps && npm run test:e2e"
+    entrypoint: ["sh", "-lc"]
+    command: "set -e; if [ -f package-lock.json ]; then npm ci; else npm install; fi; npx playwright install --with-deps; npm run test:e2e"
 
 volumes:
   pgdata:
