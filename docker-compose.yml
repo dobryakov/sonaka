@@ -1,4 +1,4 @@
-version: "3.9"
+ 
 
 services:
   postgres:
@@ -37,7 +37,7 @@ services:
       - backend
     ports:
       - "${FRONTEND_PORT:-10002}:3000"
-    command: bash -lc "npm ci || npm install && npm run dev -- --host 0.0.0.0 --port 3000"
+    command: sh -lc "npm ci || npm install && npm run dev -- --host 0.0.0.0 --port 3000"
 
   e2e:
     image: mcr.microsoft.com/playwright:v1.47.0-jammy
