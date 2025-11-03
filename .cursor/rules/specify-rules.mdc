@@ -3,6 +3,8 @@
 Auto-generated from all feature plans. Last updated: 2025-11-03
 
 ## Active Technologies
+- TypeScript 5.4.0, Node.js 18+ (React 18.3.1) (001-figma-design)
+- N/A (frontend-only feature, данные из существующего REST API) (001-figma-design)
 
 - Ruby 3.x (Rails) + Node.js 18+ (React) + PostgreSQL 15+ (001-customer-orders-dashboard)
 
@@ -61,6 +63,7 @@ Node.js/React: Use Prettier + ESLint, TypeScript strict mode
 PostgreSQL: Use migrations, avoid raw SQL in code
 
 ## Recent Changes
+- 001-figma-design: Added TypeScript 5.4.0, Node.js 18+ (React 18.3.1)
 
 - 001-customer-orders-dashboard: Added Ruby 3.x (Rails) + Node.js 18+ (React) + PostgreSQL 15+
 
