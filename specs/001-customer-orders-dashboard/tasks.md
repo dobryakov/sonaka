@@ -56,21 +56,21 @@ US1 → US2 → US3
 
 ## Phase 3: User Story 1 — Дашборд заказов (P1)
 
-- [ ] T015 [US1] Добавить модели и валидации `Order`, `OrderItem` в `/home/ubuntu/sonaka/backend/app/models/`
-- [ ] T016 [P] [US1] Реализовать сервис `DashboardTotalsCalculator` с фильтрами статусов, исключением частичных возвратов и конвертацией валют в `/home/ubuntu/sonaka/backend/app/services/dashboard_totals_calculator.rb`
-- [ ] T017 [P] [US1] Реализовать сериалайзеры `OrderSerializer`, `DashboardSerializer` в `/home/ubuntu/sonaka/backend/app/serializers/`
-- [ ] T018 [US1] Создать контроллер `api/v1/dashboard_controller.rb` c GET `/dashboard` в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/dashboard_controller.rb`
-- [ ] T019 [P] [US1] Обновить `routes.rb` для маршрута `/api/v1/dashboard` в `/home/ubuntu/sonaka/backend/config/routes.rb`
-- [ ] T020 [US1] Добавить запросы на стороне фронтенда `dashboardService.getDashboard()` в `/home/ubuntu/sonaka/frontend/src/services/dashboardService.ts`
-- [ ] T021 [P] [US1] Создать типы `Dashboard`, `OrderSummary` в `/home/ubuntu/sonaka/frontend/src/types/`
-- [ ] T022 [P] [US1] Реализовать компоненты `DashboardTotals` и `OrdersList` в `/home/ubuntu/sonaka/frontend/src/components/Dashboard/`
-- [ ] T023 [US1] Создать страницу `DashboardPage.tsx` и маршрутизацию в `/home/ubuntu/sonaka/frontend/src/pages/DashboardPage.tsx`
-- [ ] T024 [US1] Добавить бесконечную ленту `useInfiniteScroll` в `/home/ubuntu/sonaka/frontend/src/hooks/useInfiniteScroll.ts`
-- [ ] T025 [US1] Интегрировать RU-локализацию строк дашборда в `/home/ubuntu/sonaka/frontend/src/locales/ru/dashboard.json`
- - [ ] T049 [US1] Реализовать банковское округление (half‑to‑even) в `DashboardTotalsCalculator` и сериалайзерах
- - [ ] T050 [US1] Написать unit‑тесты на округление (краевые кейсы .5) в `spec/services/dashboard_totals_calculator_spec.rb`
- - [ ] T051 [US1] Unit‑тесты на точность сумм и конвертацию валют в `spec/services/dashboard_totals_calculator_spec.rb`
- - [ ] T052 [US1] Контрактные тесты `/dashboard` в `spec/requests/api/v1/dashboard_spec.rb` (мультивалюта, статусы, возвраты)
+- [X] T015 [US1] Добавить модели и валидации `Order`, `OrderItem` в `/home/ubuntu/sonaka/backend/app/models/`
+- [X] T016 [P] [US1] Реализовать сервис `DashboardTotalsCalculator` с фильтрами статусов, исключением частичных возвратов и конвертацией валют в `/home/ubuntu/sonaka/backend/app/services/dashboard_totals_calculator.rb`
+- [X] T017 [P] [US1] Реализовать сериалайзеры `OrderSerializer`, `DashboardSerializer` в `/home/ubuntu/sonaka/backend/app/serializers/`
+- [X] T018 [US1] Создать контроллер `api/v1/dashboard_controller.rb` c GET `/dashboard` в `/home/ubuntu/sonaka/backend/app/controllers/api/v1/dashboard_controller.rb`
+- [X] T019 [P] [US1] Обновить `routes.rb` для маршрута `/api/v1/dashboard` в `/home/ubuntu/sonaka/backend/config/routes.rb`
+- [X] T020 [US1] Добавить запросы на стороне фронтенда `dashboardService.getDashboard()` в `/home/ubuntu/sonaka/frontend/src/services/dashboardService.ts`
+- [X] T021 [P] [US1] Создать типы `Dashboard`, `OrderSummary` в `/home/ubuntu/sonaka/frontend/src/types/`
+- [X] T022 [P] [US1] Реализовать компоненты `DashboardTotals` и `OrdersList` в `/home/ubuntu/sonaka/frontend/src/components/Dashboard/`
+- [X] T023 [US1] Создать страницу `DashboardPage.tsx` и маршрутизацию в `/home/ubuntu/sonaka/frontend/src/pages/DashboardPage.tsx`
+- [X] T024 [US1] Добавить бесконечную ленту `useInfiniteScroll` в `/home/ubuntu/sonaka/frontend/src/hooks/useInfiniteScroll.ts`
+- [X] T025 [US1] Интегрировать RU-локализацию строк дашборда в `/home/ubuntu/sonaka/frontend/src/locales/ru/dashboard.json`
+ - [X] T049 [US1] Реализовать банковское округление (half‑to‑even) в `DashboardTotalsCalculator` и сериалайзерах
+ - [X] T050 [US1] Написать unit‑тесты на округление (краевые кейсы .5) в `spec/services/dashboard_totals_calculator_spec.rb`
+ - [X] T051 [US1] Unit‑тесты на точность сумм и конвертацию валют в `spec/services/dashboard_totals_calculator_spec.rb`
+ - [X] T052 [US1] Контрактные тесты `/dashboard` в `spec/requests/api/v1/dashboard_spec.rb` (мультивалюта, статусы, возвраты)
 
 ## Phase 4: User Story 2 — Ранее купленные товары (P2)
 
